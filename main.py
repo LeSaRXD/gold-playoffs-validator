@@ -57,8 +57,8 @@ async def player_data(client: aiohttp.ClientSession, username: str) -> tuple[str
 
 
 async def main() -> None:
-	with open("output.csv", "w") as fout:
-		fout.write("Name,Current Elo,Highest of all time,Current season lowest\n")
+	fout = open("output.csv", "w")
+	fout.write("Name,Current Elo,Highest of all time,Current season lowest\n")
 
 	usernames = []
 	with open("names.txt", "r") as fin:
@@ -76,8 +76,7 @@ async def main() -> None:
 				print(f"Could not get user {username}\n{err}")
 				continue
 
-			with open("output.csv", "a") as fout:
-				fout.write(f"{username},{data.elo},{data.highest},{data.lowest}\n")
+			fout.write(f"{username},{data.elo},{data.highest},{data.lowest}\n")
 
 	print("Done! Check output.csv")
 

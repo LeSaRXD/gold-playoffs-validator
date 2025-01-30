@@ -1,2 +1,3 @@
-python3 main.py
+pip install asyncio aiohttp
+python main.py
 pause

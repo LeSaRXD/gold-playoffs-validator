@@ -79,5 +79,8 @@ async def main() -> None:
 			with open("output.csv", "a") as fout:
 				fout.write(f"{username},{data.elo},{data.highest},{data.lowest}\n")
 
+	print("Done! Check output.csv")
+
+
 if __name__ == "__main__":
 	asyncio.run(main())

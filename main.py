@@ -13,11 +13,6 @@ class PlayerData:
 	elo: int
 
 
-	@property
-	def weighted_avg(self) -> float:
-		return (2 * self.lowest + self.highest + self.elo) / 4
-
-
 async def player_season_data(client: aiohttp.ClientSession, username: str, season: int) -> tuple[PlayerData | None, str | None]:
 	async with client.get(f"https://mcsrranked.com/api/users/{username}?season={season}") as res:
 		json: dict = await res.json()
